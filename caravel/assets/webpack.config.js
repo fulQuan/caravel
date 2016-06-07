@@ -19,7 +19,7 @@ var config = {
   },
   resolve: {
     alias: {
-      'webworkify': 'webworkify-webpack'
+      webworkify: 'webworkify-webpack'
     }
   },
   module: {
@@ -28,6 +28,12 @@ var config = {
         test: /\.jsx?/,
         include: APP_DIR,
         exclude: APP_DIR + '/node_modules',
+        loader: 'babel'
+      },
+    /* for react-map-gl overlays */
+      {
+        test: /\.react\.js$/,
+        include: APP_DIR + '/node_modules/react-map-gl/src/overlays',
         loader: 'babel'
       },
     /* for require('*.css') */
