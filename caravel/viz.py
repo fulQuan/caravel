@@ -1681,8 +1681,16 @@ class MapboxViz(BaseViz):
         'fields': (
             ('all_columns_x', 'all_columns_y'),
             'clustering_radius',
+        )
+    }, {
+        'label': 'Points',
+        'fields': (
             'point_radius',
             'point_radius_unit',
+        )
+    }, {
+        'label': 'Labelling',
+        'fields': (
             'all_columns',
             'pandas_aggfunc',
         )
@@ -1690,6 +1698,14 @@ class MapboxViz(BaseViz):
         'label': 'Visual Tweaks',
         'fields': (
             'mapbox_style',
+            'global_opacity',
+        )
+    }, {
+        'label': 'Viewport',
+        'fields': (
+            'viewport_longitude',
+            'viewport_latitude',
+            'viewport_zoom',
         )
     },)
 
@@ -1777,6 +1793,10 @@ class MapboxViz(BaseViz):
             "clusteringRadius": fd.get("clustering_radius"),
             "pointRadiusUnit": fd.get("point_radius_unit"),
             "mapboxApiKey": config.get('MAPBOX_API_KEY'),
+            "globalOpacity": fd.get("global_opacity"),
+            "viewportLongitude": fd.get("viewport_longitude"),
+            "viewportLatitude": fd.get("viewport_latitude"),
+            "viewportZoom": fd.get("viewport_zoom"),
         }
 
 
