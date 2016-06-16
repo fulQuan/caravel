@@ -42,7 +42,8 @@ from sqlalchemy_utils import EncryptedType
 import caravel
 from caravel import app, db, get_session, utils, sm
 from caravel.viz import viz_types
-from caravel.utils import flasher, MetricPermException, DimSelector
+from caravel.utils import (
+    flasher, MetricPermException, DimSelector, column_is_numerical)
 
 config = app.config
 
@@ -337,6 +338,10 @@ class Queryable(object):
     @property
     def main_dttm_col(self):
         return "timestamp"
+
+    @property
+    def numerical_column_names(self):
+        return sorted([c.column_name for c in self.columns if column_is_numerical(c)])
 
     @property
     def groupby_column_names(self):
